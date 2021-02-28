@@ -149,3 +149,6 @@
 /home/oem/aspbiblio/bin/Debug/net5.0/MySql.Data.EntityFrameworkCore.dll
 /home/oem/aspbiblio/obj/Debug/net5.0/Razor/Views/Loan/index.cshtml.g.cs
 /home/oem/aspbiblio/obj/Debug/net5.0/Razor/Views/users/Create.cshtml.g.cs
+/home/oem/aspbiblio/obj/Debug/net5.0/Razor/Views/roles/index.cshtml.g.cs
+/home/oem/aspbiblio/obj/Debug/net5.0/Razor/Views/roles/create.cshtml.g.cs
+/home/oem/aspbiblio/obj/Debug/net5.0/Razor/Views/roles/edit.cshtml.g.cs

@@ -18,10 +18,18 @@ namespace aspbiblio.Controllers
             _logger = logger;
         }
 
-        public IActionResult Login()
-        {            
+        // public IActionResult Login()
+        // {            
+        //     return View();
+        // } 
+        
+        //
+        // GET: /Account/Login
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
-        } 
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

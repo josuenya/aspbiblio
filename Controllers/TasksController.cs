@@ -29,7 +29,6 @@ namespace aspbiblio.Controllers
           cmd.CommandText = @"UPDATE Tasks SET Completed = STR_TO_DATE(@Date, '%Y/%m/%d') WHERE TaskId = @TaskId;";
           cmd.Parameters.AddWithValue("@TaskId", input.TaskId);
           cmd.Parameters.AddWithValue("@Date", DateTime.Now.ToString("yyyy/MM/dd"));
-
           var recs = cmd.ExecuteNonQuery();
         }
 

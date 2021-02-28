@@ -77,10 +77,17 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" asp-controller="Users" asp-action="Index">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class=" mdi mdi-account-multiple menu-icon"></i>
-              <span class="menu-title">Utilisateurs</span> 
-            </a> 
+              <span class="menu-title">Gestion Utilisateurs</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" asp-controller="Users" asp-action="Index">Utilisateurs</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-controller="Roles" asp-action="Index">Roles</a></li>
+              </ul>
+            </div>
           </li>
 
           <li class="nav-item">
@@ -100,29 +107,33 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
               <i class="mdi mdi-cart menu-icon"></i>
-              <span class="menu-title">Gestion Achats</span>
+              <span class="menu-title">Gestion des Livres</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="achat">
               <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" asp-controller="Purcharses" asp-action="Index">Livres</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-controller="Purcharses" asp-action="Index">Auteurs</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-controller="Purcharses" asp-action="Index">Editeurs</a></li>
+
                 <li class="nav-item"> <a class="nav-link" asp-controller="Purcharses" asp-action="Index">Mes Achats</a></li>
                 <li class="nav-item"> <a class="nav-link" >Nouveau Achats</a></li>
               </ul>
             </div>
           </li> 
-
+@* <?=(isset($page) && $page == 'Produits') ? 'active' : 'hidden'?> *@
           <li class="nav-item">
-            <a class="nav-link" href="#">                
+            <a class="nav-link hidden " href="#">                
               <i class="mdi mdi-book-open-page-variant menu-icon"></i>
               <span class="menu-title">Consulter le Catalogue</span>
             </a>
-          </li>                  
+          </li> 
+
         </ul>
       </nav>
       <!-- partial -->
       <div class="main-panel">
-        <div class="content-wrapper">
-          
+        <div class="content-wrapper">          
           <div class="row">
             <div class="col-md-12 grid-margin">
               <div class="d-flex justify-content-between flex-wrap">
@@ -133,7 +144,7 @@
                   </div>
                   <div class="d-flex">
                     <i class="mdi mdi-home text-muted hover-cursor"></i>
-                    <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</p>
+                    <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Dashboard&nbsp;/@ViewBag.Title &nbsp;</p>
                     @* <p class="text-primary mb-0 hover-cursor">Analytics</p> *@
                   </div>
                 </div>                
@@ -146,8 +157,8 @@
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © BOOKSTORE 2020</span>
-          </div>
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © BOOKSTORE - @DateTime.Now.Year</span>
+            </div>
         </footer>
         <!-- partial -->
       </div>

@@ -20,18 +20,26 @@ namespace aspbiblio.Controllers
             _logger = logger;
         }
 
+        //connect to mysql database
         private string connectionString = "server=localhost; database=mybookshop; uid=root; pwd=;SslMode = none";
+
+            public IActionResult Index()
+            { 
+                ViewBag.Title = "users"; 
+                return View(GetAllUsers());
+            } 
 
             //To View all Users details      
             private IEnumerable<Users> GetAllUsers()    
             {     
                 List<Users> lstusers = new List<Users>();    
                 using (MySqlConnection con = new MySqlConnection(connectionString))    
-                {    string query = "select u.*,r.libelle from users u,roles r where u.roles_id = r.id";
+                {    
+                    string query = "select u.*,r.libelle from users u,roles r where u.roles_id = r.id";
                     MySqlCommand cmd = new MySqlCommand(query, con);    
                     // cmd.CommandType = CommandType.StoredProcedure;            
                     con.Open();    
-                    MySqlDataReader rdr = cmd.ExecuteReader();    
+                    MySqlDataReader rdr = cmd.ExecuteReader();  
         
                     while (rdr.Read())    
                     {    
@@ -49,17 +57,21 @@ namespace aspbiblio.Controllers
                 return lstusers;    
             }   
 
-
-            public IActionResult Index()
-            {
-                return View(GetAllUsers());
-            } 
-
+        [HttpPost]
+        public ActionResult edit(Users userModel)
+        {
+            using (MySqlConnection con = new MySqlConnection(connectionString))
+            { 
+            
+            }
+            ModelState.Clear();
+            return View("Create", new Users());
+        }
+                
             public ActionResult Create()
             {
                 return View();
-            }
-
+            } 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
