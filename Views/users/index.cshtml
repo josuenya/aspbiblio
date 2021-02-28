@@ -1,0 +1,52 @@
+
+@model IEnumerable<aspbiblio.Models.Users>
+
+<div class="row">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        @* <p class="card-title"></p> *@
+        <a asp-controller="Users" asp-action="Create" class="btn btn-primary">Ajouter Un Nouveau Utilisateur</a>
+        <div class="table-responsive">
+          <table id="recent-purchases-listing" class="table">
+            <thead>
+              <tr>
+                  <th>Nom</th> 
+                  <th>Prenom</th>
+                  <th>Role</th>
+                  <th>Phone</th>
+                  <th>Email</th>
+                  <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roles)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.id })  |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.id }) 
+                    </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>

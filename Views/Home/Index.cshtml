@@ -1,0 +1,50 @@
+﻿<div class="card">
+  <div class="card-body">
+    <p class="card-title">Etats des Livres Emprunter</p>
+  <div class="table-responsive">
+  <table id="recent-purchases-listing" class="table">
+  <thead>
+  <tr>
+      <th>Nom</th>
+      <th class="empty">Type</th>
+      <th>Nom du Livre</th> 
+      <th>Date Emprunt</th>
+      <th>Date De Retour</th>
+      <th>Gross amount</th>
+  </tr>
+  </thead> 
+  <tbody>
+  <tr>@if (Model != null)
+  {
+  var added = false;
+  foreach (var t in Model)
+  {
+  <tr id="tr_@t.TaskId">
+    <td><i class="mdi mdi-archive" onclick="Click(@t.TaskId,'Archive')"></i></td>
+    <td id="td_incomplete_@t.TaskId" style="display:@(t.Completed == null ? "" : "none");">
+      <i class="mdi mdi-archive" onclick="Click(@t.TaskId,'Complete')"></i>
+    </td>
+    <td id="td_complete_@t.TaskId" style="display:@(t.Completed == null ? "none" : "");">
+      <i class="far fa-check-square" onclick="Click(@t.TaskId,'Incomplete')"></i>
+    </td>
+    <td>@t.Text</td>
+  </tr>
+  added = true;
+  }
+
+  if (!added)
+  {
+  <tr>
+  <td></td>
+  <td></td>
+  <td style="display:none;"></td>
+  <td>No tasks found.</td>
+  </tr>
+  }
+  }
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  </div>
+</div>
