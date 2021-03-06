@@ -38,7 +38,6 @@ namespace aspbiblio.Controllers
           var cmd = this.MySqlDatabase.Connection.CreateCommand() as MySqlCommand;
           cmd.CommandText = @"UPDATE Tasks SET Completed = NULL WHERE TaskId = @TaskId;";
           cmd.Parameters.AddWithValue("@TaskId", input.TaskId);
-
           var recs = cmd.ExecuteNonQuery();
         }
 
