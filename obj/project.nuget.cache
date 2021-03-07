@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "d4c6hTF57DND7/DR+9pVGWA1GUkosWh4z9zRnU0vVQCkEp3ZrNDa2uN9XmoNVcT+4VUHHzxMyCTu0Z2GqHapuQ==",
+  "dgSpecHash": "iDBd8aJvXP6q68QUp/PQ0jjfKYr0Czmv66eRb7u1pFYIqXVEzNaf5jnruA7uBDkNttiRz5JILoLdOkzxwKRd/w==",
   "success": true,
-  "projectFilePath": "/home/oem/aspbiblio/aspbiblio.csproj",
+  "projectFilePath": "/home/oem/ASP/aspbiblio/aspbiblio.csproj",
   "expectedPackageFiles": [
     "/home/oem/.nuget/packages/bouncycastle.netcore/1.8.5/bouncycastle.netcore.1.8.5.nupkg.sha512",
     "/home/oem/.nuget/packages/google.protobuf/3.11.4/google.protobuf.3.11.4.nupkg.sha512",

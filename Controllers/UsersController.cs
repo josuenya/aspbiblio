@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -57,17 +58,35 @@ namespace aspbiblio.Controllers
                 return lstusers;    
             }   
 
-        [HttpPost]
-        public ActionResult edit(Users userModel)
+        public ActionResult Edit(int? id)
         {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var arlistuser = new ArrayList();
+
             using (MySqlConnection con = new MySqlConnection(connectionString))
             { 
+                string query = "select * from users u where u.id = id";
+                MySqlCommand cmd = new MySqlCommand(query, con);    
+                // cmd.CommandType = CommandType.StoredProcedure;            
+                con.Open();    
+                MySqlDataReader result = cmd.ExecuteReader(); 
+                  while (result.Read())    
+                    {   
+                        arlistuser.Add(result[0]);
+                        arlistuser.Add(result[0]);
+                        arlistuser.Add(result[0]);
+                        arlistuser.Add(result[0]);
+                    }    
+                    con.Close(); 
             
             }
-            ModelState.Clear();
-            return View("Create", new Users());
+            return View(arlistuser);
         }
-                
+            //To create View of this Action result                
             public ActionResult Create()
             {
                 return View();

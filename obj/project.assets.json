@@ -7832,11 +7832,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/oem/aspbiblio/aspbiblio.csproj",
+      "projectUniqueName": "/home/oem/ASP/aspbiblio/aspbiblio.csproj",
       "projectName": "aspbiblio",
-      "projectPath": "/home/oem/aspbiblio/aspbiblio.csproj",
+      "projectPath": "/home/oem/ASP/aspbiblio/aspbiblio.csproj",
       "packagesPath": "/home/oem/.nuget/packages/",
-      "outputPath": "/home/oem/aspbiblio/obj/",
+      "outputPath": "/home/oem/ASP/aspbiblio/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/oem/.nuget/NuGet/NuGet.Config"
