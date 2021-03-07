@@ -16,11 +16,11 @@ namespace aspbiblio.Controllers
     public class BooksController : Controller
     {
 
-        private MySqlDatabase MySqlDatabase { get; set; }
+        private readonly ApplicationDbContext db;
 
-        public BooksController(MySqlDatabase mySqlDatabase)
+        public BooksController(ApplicationDbContext db)
         {
-            this.MySqlDatabase = mySqlDatabase;
+            this.db = db;
         }
 
         public IActionResult Index()

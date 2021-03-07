@@ -308,3 +308,12 @@
 /home/oem/ASP/aspbiblio/obj/Debug/net5.0/aspbiblio.Views.pdb
 /home/oem/ASP/aspbiblio/obj/Debug/net5.0/aspbiblio.csproj.CopyComplete
 /home/oem/ASP/aspbiblio/obj/Debug/net5.0/aspbiblio.genruntimeconfig.cache
+/home/oem/ASP/aspbiblio/bin/Debug/net5.0/EntityFramework.SqlServer.dll
+/home/oem/ASP/aspbiblio/bin/Debug/net5.0/EntityFramework.dll
+/home/oem/ASP/aspbiblio/bin/Debug/net5.0/System.CodeDom.dll
+/home/oem/ASP/aspbiblio/bin/Debug/net5.0/System.Data.SqlClient.dll
+/home/oem/ASP/aspbiblio/bin/Debug/net5.0/runtimes/win-arm64/native/sni.dll
+/home/oem/ASP/aspbiblio/bin/Debug/net5.0/runtimes/win-x64/native/sni.dll
+/home/oem/ASP/aspbiblio/bin/Debug/net5.0/runtimes/win-x86/native/sni.dll
+/home/oem/ASP/aspbiblio/bin/Debug/net5.0/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/home/oem/ASP/aspbiblio/bin/Debug/net5.0/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll

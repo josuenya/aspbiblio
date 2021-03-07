@@ -9,16 +9,18 @@ using Microsoft.Extensions.Logging;
 using System.Data;    
 using MySql.Data.MySqlClient;  
 using aspbiblio.Models;
-
+using aspbiblio.Data;
 namespace aspbiblio.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly ILogger<AuthController> _logger;
+        // private readonly ILogger<AuthController> _logger;
+    
+        private readonly ApplicationDbContext db;
 
-        public UsersController(ILogger<AuthController> logger)
+        public UsersController(ApplicationDbContext db)
         {
-            _logger = logger;
+            this.db = db;
         }
 
         //connect to mysql database
@@ -38,7 +40,7 @@ namespace aspbiblio.Controllers
                 {    
                     string query = "select u.*,r.libelle from users u,roles r where u.roles_id = r.id";
                     MySqlCommand cmd = new MySqlCommand(query, con);    
-                    // cmd.CommandType = CommandType.StoredProcedure;            
+                    //cmd.CommandType = CommandType.StoredProcedure;            
                     con.Open();    
                     MySqlDataReader rdr = cmd.ExecuteReader();  
         
