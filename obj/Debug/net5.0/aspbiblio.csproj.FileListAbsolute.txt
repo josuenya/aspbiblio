@@ -317,3 +317,6 @@
 /home/oem/ASP/aspbiblio/bin/Debug/net5.0/runtimes/win-x86/native/sni.dll
 /home/oem/ASP/aspbiblio/bin/Debug/net5.0/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
 /home/oem/ASP/aspbiblio/bin/Debug/net5.0/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/home/oem/ASP/aspbiblio/obj/Debug/net5.0/Razor/Views/Books/index.cshtml.g.cs
+/home/oem/ASP/aspbiblio/obj/Debug/net5.0/Razor/Views/Autor/index.cshtml.g.cs
+/home/oem/ASP/aspbiblio/obj/Debug/net5.0/Razor/Views/Editor/index.cshtml.g.cs

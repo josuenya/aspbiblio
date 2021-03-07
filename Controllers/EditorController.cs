@@ -10,15 +10,16 @@ using System.Data;
 using MySql.Data.MySqlClient;  
 using aspbiblio.Models;
 using aspbiblio.Data;
+
 namespace aspbiblio.Controllers
 {
-    public class UsersController : Controller
+    public class EditorController : Controller
     {
         // private readonly ILogger<AuthController> _logger;
     
         private readonly ApplicationDbContext db;
 
-        public UsersController(ApplicationDbContext db)
+        public EditorController(ApplicationDbContext db)
         {
             this.db = db;
         }
@@ -28,36 +29,36 @@ namespace aspbiblio.Controllers
 
             public IActionResult Index()
             { 
-                ViewBag.Title = "users"; 
-                return View(Getusers());
+                ViewBag.Title = "Editeur des Livres"; 
+                return View(Geteditor());
             } 
 
             //To View all Users details      
-            private IEnumerable<Users> Getusers()    
+            private IEnumerable<Editor> Geteditor()    
             {     
-                List<Users> lstusers = new List<Users>();    
+                List<Editor> lsteditor = new List<Editor>();   
                 using (MySqlConnection con = new MySqlConnection(connectionString))    
                 {    
-                    string query = "select u.*,r.libelle as roles from users u,roles r where u.roles_id = r.id";
+                    string query = "select * from editors";
                     MySqlCommand cmd = new MySqlCommand(query, con);    
                     //cmd.CommandType = CommandType.StoredProcedure;            
                     con.Open();    
-                    MySqlDataReader rdr = cmd.ExecuteReader();  
+                    MySqlDataReader result = cmd.ExecuteReader();  
         
-                    while (rdr.Read())    
+                    while (result.Read())    
                     {    
-                        Users users = new Users(); 
-                        users.id = Convert.ToInt32(rdr["id"]);    
-                        users.name = rdr["name"].ToString();    
-                        users.username = rdr["username"].ToString();    
-                        users.phone = rdr["phone"].ToString();    
-                        users.email = rdr["email"].ToString(); 
-                        users.roles = rdr["roles"].ToString();           
-                        lstusers.Add(users);    
+                        Editor editor = new Editor(); 
+                        editor.id = Convert.ToInt32(result["id"]);    
+                        editor.name = result["name"].ToString();    
+                        editor.adress = result["adress"].ToString();
+                        editor.city = result["city"].ToString(); 
+                        editor.created_at = Convert.ToDateTime(result["created_at"]);             
+                        editor.updated_at = Convert.ToDateTime(result["updated_at"]);             
+                        lsteditor.Add(editor);    
                     }    
                     con.Close();    
                 }    
-                return lstusers;    
+                return lsteditor;    
             }   
 
         public ActionResult Edit(int? id)

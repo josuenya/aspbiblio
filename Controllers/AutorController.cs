@@ -12,13 +12,13 @@ using aspbiblio.Models;
 using aspbiblio.Data;
 namespace aspbiblio.Controllers
 {
-    public class UsersController : Controller
+    public class AutorController : Controller
     {
         // private readonly ILogger<AuthController> _logger;
     
         private readonly ApplicationDbContext db;
 
-        public UsersController(ApplicationDbContext db)
+        public AutorController(ApplicationDbContext db)
         {
             this.db = db;
         }
@@ -28,36 +28,35 @@ namespace aspbiblio.Controllers
 
             public IActionResult Index()
             { 
-                ViewBag.Title = "users"; 
-                return View(Getusers());
+                ViewBag.Title = "Auteur des Livres"; 
+                return View(Getautor());
             } 
 
             //To View all Users details      
-            private IEnumerable<Users> Getusers()    
+            private IEnumerable<Autor> Getautor()    
             {     
-                List<Users> lstusers = new List<Users>();    
+                List<Autor> lstautor = new List<Autor>();   
                 using (MySqlConnection con = new MySqlConnection(connectionString))    
                 {    
-                    string query = "select u.*,r.libelle as roles from users u,roles r where u.roles_id = r.id";
+                    string query = "select * from autors";
                     MySqlCommand cmd = new MySqlCommand(query, con);    
                     //cmd.CommandType = CommandType.StoredProcedure;            
                     con.Open();    
-                    MySqlDataReader rdr = cmd.ExecuteReader();  
+                    MySqlDataReader result = cmd.ExecuteReader();  
         
-                    while (rdr.Read())    
+                    while (result.Read())    
                     {    
-                        Users users = new Users(); 
-                        users.id = Convert.ToInt32(rdr["id"]);    
-                        users.name = rdr["name"].ToString();    
-                        users.username = rdr["username"].ToString();    
-                        users.phone = rdr["phone"].ToString();    
-                        users.email = rdr["email"].ToString(); 
-                        users.roles = rdr["roles"].ToString();           
-                        lstusers.Add(users);    
+                        Autor autor = new Autor(); 
+                        autor.id = Convert.ToInt32(result["id"]);    
+                        autor.name = result["name"].ToString();    
+                        autor.phone = result["phone"].ToString(); 
+                        autor.created_at = Convert.ToDateTime(result["created_at"]);             
+                        autor.updated_at = Convert.ToDateTime(result["updated_at"]);             
+                        lstautor.Add(autor);    
                     }    
                     con.Close();    
                 }    
-                return lstusers;    
+                return lstautor;    
             }   
 
         public ActionResult Edit(int? id)
