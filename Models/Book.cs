@@ -15,6 +15,8 @@ namespace aspbiblio.Models
 
         //attribute not in Books table
         public string autors_name {get; set;}
+        public string editors_name {get; set;}
+
 
     }
 }
