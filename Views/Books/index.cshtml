@@ -13,9 +13,12 @@
                 <tr>
                     <th>Libelle</th> 
                     <th>Description</th>
+                    <th>Auteur</th>
                     <th>En Stock</th>
                     <th>Creer le</th>
                     <th>Modifier le</th>
+                    <th>Action</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -28,9 +31,17 @@
                         @Html.DisplayFor(modelItem => item.description)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.autors_name)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.qty)
                     </td>
-                
+                    <td>
+                        @Html.DisplayFor(modelItem => item.created_at)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.updated_at)
+                    </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
                         @Html.ActionLink("Details", "Details", new { id=item.id })  |
@@ -39,7 +50,7 @@
                 </tr>
                 }
             </tbody>
-            </table>
+            </table> 
         </div>
         </div>
     </div>

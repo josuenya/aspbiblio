@@ -42,17 +42,19 @@ namespace aspbiblio.Controllers
                     MySqlCommand cmd = new MySqlCommand(query, con);    
                     //cmd.CommandType = CommandType.StoredProcedure;            
                     con.Open();    
-                    MySqlDataReader rdr = cmd.ExecuteReader();  
+                    MySqlDataReader result = cmd.ExecuteReader();  
         
-                    while (rdr.Read())    
+                    while (result.Read())    
                     {    
                         Users users = new Users(); 
-                        users.id = Convert.ToInt32(rdr["id"]);    
-                        users.name = rdr["name"].ToString();    
-                        users.username = rdr["username"].ToString();    
-                        users.phone = rdr["phone"].ToString();    
-                        users.email = rdr["email"].ToString(); 
-                        users.roles = rdr["roles"].ToString();           
+                        users.id = Convert.ToInt32(result["id"]);    
+                        users.name = result["name"].ToString();    
+                        users.username = result["username"].ToString();    
+                        users.phone = result["phone"].ToString();    
+                        users.email = result["email"].ToString(); 
+                        users.roles = result["roles"].ToString();
+                        users.created_at = Convert.ToDateTime(result["created_at"]);             
+                        users.updated_at = Convert.ToDateTime(result["updated_at"]);           
                         lstusers.Add(users);    
                     }    
                     con.Close();    

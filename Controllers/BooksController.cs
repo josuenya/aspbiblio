@@ -35,7 +35,7 @@ namespace aspbiblio.Controllers
                 List<Book> lstbooks = new List<Book>();    
                 using (MySqlConnection con = new MySqlConnection(connectionString))    
                 {    
-                    string query = "select * from books";
+                    string query = "select * from books_autors ba,books b,autors a where ba.books_id = b.id and ba.autors_id = a.id";
                     MySqlCommand cmd = new MySqlCommand(query, con);    
                     //cmd.CommandType = CommandType.StoredProcedure;            
                     con.Open();    
@@ -46,7 +46,13 @@ namespace aspbiblio.Controllers
                         Book books = new Book(); 
                         books.id = Convert.ToInt32(result["id"]);    
                         books.libelle = result["libelle"].ToString();    
-                        books.description = result["description"].ToString();          
+                        books.description = result["description"].ToString();
+                        books.qty = Convert.ToInt32(result["qty"]);         
+                        books.autors_name = result["name"].ToString();          
+
+                        books.created_at = Convert.ToDateTime(result["created_at"]);             
+                        books.updated_at = Convert.ToDateTime(result["updated_at"]);             
+                        
                         lstbooks.Add(books);    
                     }    
                     con.Close();    
@@ -54,11 +60,5 @@ namespace aspbiblio.Controllers
                 return lstbooks;    
             }
 
-
-        // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        // public IActionResult Error()
-        // {
-        //     return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        // }
     }
 }

@@ -16,6 +16,8 @@
                     <th>Ville</th>
                     <th>Creer le</th>
                     <th>Modifier le</th>
+                    <th>Action</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -39,7 +41,6 @@
                 
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                        @Html.ActionLink("Details", "Details", new { id=item.id })  |
                         @Html.ActionLink("Delete", "Delete", new { id=item.id }) 
                     </td>
                 </tr>

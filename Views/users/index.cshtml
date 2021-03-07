@@ -16,6 +16,8 @@
                   <th>Role</th>
                   <th>Phone</th>
                   <th>Email</th>
+                  <th>Creer le:</th>
+                  <th>Modifier le:</th>
                   <th>Action</th>
               </tr>
             </thead>
@@ -36,6 +38,12 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.created_at)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.updated_at)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
