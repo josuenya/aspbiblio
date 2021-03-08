@@ -18,35 +18,37 @@ namespace aspbiblio.Controllers
         private string connectionString = "server=localhost; database=mybookshop; uid=root; pwd=;SslMode = none";
 
             //To View all Users details      
-            private IEnumerable<Users> GetAllUsers()    
+            private IEnumerable<Loan> GetLoan()    
             {     
-                List<Users> lstusers = new List<Users>();    
+                List<Loan> lstloan = new List<Loan>();    
                 using (MySqlConnection con = new MySqlConnection(connectionString))    
-                {    string query = "select * from users";
+                {    string query = "select * from loan l,users u,books b where l.users_id = u.id and l.books_id = b.id";
                     MySqlCommand cmd = new MySqlCommand(query, con);    
                     // cmd.CommandType = CommandType.StoredProcedure;            
                     con.Open();    
-                    MySqlDataReader rdr = cmd.ExecuteReader();    
+                    MySqlDataReader result = cmd.ExecuteReader();    
         
-                    while (rdr.Read())    
-                    {    
-                        Users users = new Users(); 
-                        users.id = Convert.ToInt32(rdr["id"]);    
-                        users.name = rdr["name"].ToString();    
-                        users.username = rdr["username"].ToString();    
-                        users.phone = rdr["phone"].ToString();    
-                        users.email = rdr["email"].ToString();            
-                        lstusers.Add(users);    
+                    while (result.Read())    
+                    {     
+                        Loan loan = new Loan(); 
+                        loan.id = Convert.ToInt32(result["id"]);    
+                        loan.users_name = result["name"].ToString();
+                        loan.libelle = result["libelle"].ToString();
+                        loan.status = result["statut"].ToString();    
+                        loan.return_date = Convert.ToDateTime(result["return_date"]);             
+                        loan.created_at = Convert.ToDateTime(result["return_date"]); 
+                        loan.updated_at = Convert.ToDateTime(result["updated_at"]);    
+                        lstloan.Add(loan);    
                     }    
                     con.Close();    
                 }    
-                return lstusers;    
+                return lstloan;    
             }   
 
 
             public IActionResult Index()
             {
-                return View(GetAllUsers());
+                return View(GetLoan());
             } 
 
     }

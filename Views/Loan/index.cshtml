@@ -1,4 +1,4 @@
-@model IEnumerable<aspbiblio.Models.Users>
+@model IEnumerable<aspbiblio.Models.Loan>
 <div class="row">
             <div class="col-md-12 stretch-card">
               <div class="card">
@@ -14,23 +14,30 @@
                             <th>Status</th>
                             <th>Date de retour</th>
                             <th>Date d'emprunt</th>
-                            <th>Date de Modification</th>
+                            <th>Modifier le:</th>
+                            <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
                         @foreach (var item in Model) {
                               <tr>
                                   <td>
-                                      @Html.DisplayFor(modelItem => item.name)
+                                      @Html.DisplayFor(modelItem => item.users_name)
                                   </td>
                                   <td>
-                                      @Html.DisplayFor(modelItem => item.username)
+                                      @Html.DisplayFor(modelItem => item.libelle)
                                   </td>
                                   <td>
-                                      @Html.DisplayFor(modelItem => item.phone)
+                                      @Html.DisplayFor(modelItem => item.status)
                                   </td>
                                   <td>
-                                      @Html.DisplayFor(modelItem => item.email)
+                                      @Html.DisplayFor(modelItem => item.return_date)
+                                  </td>
+                                  <td>
+                                      @Html.DisplayFor(modelItem => item.created_at)
+                                  </td>
+                                  <td>
+                                      @Html.DisplayFor(modelItem => item.updated_at)
                                   </td>
                                   <td>
                                       @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
