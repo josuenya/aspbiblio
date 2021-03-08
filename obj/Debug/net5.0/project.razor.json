@@ -15643,6 +15643,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/oem/aspbiblio/Views/users/Edit.cshtml",
+      "TargetPath": "Views\\users\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/oem/aspbiblio/Views/roles/index.cshtml",
       "TargetPath": "Views\\roles\\index.cshtml",
       "FileKind": "mvc"

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/oem/aspbiblio/aspbiblio.csproj": {}
+    "/home/oem/ASP/aspbiblio/aspbiblio.csproj": {}
   },
   "projects": {
-    "/home/oem/aspbiblio/aspbiblio.csproj": {
+    "/home/oem/ASP/aspbiblio/aspbiblio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/oem/aspbiblio/aspbiblio.csproj",
+        "projectUniqueName": "/home/oem/ASP/aspbiblio/aspbiblio.csproj",
         "projectName": "aspbiblio",
-        "projectPath": "/home/oem/aspbiblio/aspbiblio.csproj",
+        "projectPath": "/home/oem/ASP/aspbiblio/aspbiblio.csproj",
         "packagesPath": "/home/oem/.nuget/packages/",
-        "outputPath": "/home/oem/aspbiblio/obj/",
+        "outputPath": "/home/oem/ASP/aspbiblio/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/oem/.nuget/NuGet/NuGet.Config"
@@ -38,6 +38,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
             "IdentityServer4": {
               "target": "Package",
               "version": "[4.1.1, )"

@@ -13,11 +13,11 @@ namespace aspbiblio.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+       private readonly ApplicationDbContext db;
 
-        public HomeController()
+        public HomeController(ApplicationDbContext db)
         {
-
+            this.db = db;
         }
 
         public IActionResult Index()

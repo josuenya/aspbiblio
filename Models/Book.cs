@@ -7,11 +7,16 @@ namespace aspbiblio.Models
     {
         public int id { get; set; }
         public string libelle { get; set; }
+        public string description { get; set; }
         public decimal PU { get; set; }
-        public int qty { get; set;}
+        public int qty { get; set;} 
+        public DateTime created_at { get; set;} 
+        public DateTime updated_at { get; set;} 
 
-        public int editor_id { get; set;}
+        //attribute not in Books table
+        public string autors_name {get; set;}
+        public string editors_name {get; set;}
 
-        public int autor_id { get; set;}
+
     }
 }

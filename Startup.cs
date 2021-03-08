@@ -24,9 +24,10 @@ namespace aspbiblio
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-            //MySql
-            services.AddTransient<MySqlDatabase>(_ => new MySqlDatabase("server=localhost; database=mybookshop; uid=root; pwd=;SslMode = none"));
+            services.AddControllersWithViews(); 
+            //Connect to MySql database mybookshop
+            // services.AddDbContext<ApplicationDbContext>(o => o.UseMySQL(Configuration.GetConnectionString("MyDb")));
+            services.AddTransient<ApplicationDbContext>(_ => new ApplicationDbContext("server=localhost; database=mybookshop; uid=root; pwd=;SslMode = none"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,8 +52,8 @@ namespace aspbiblio
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Auth}/{action=Login}/{id?}");
-            });
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            }); 
         }
     }
 }

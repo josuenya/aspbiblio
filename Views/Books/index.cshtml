@@ -1,0 +1,57 @@
+
+@model IEnumerable<aspbiblio.Models.Book>
+
+<div class="row">
+    <div class="col-md-12 stretch-card">
+    <div class="card">
+        <div class="card-body">
+        @* <p class="card-title"></p> *@
+        <a asp-controller="Users" asp-action="Create" class="btn btn-primary">Ajouter Un Nouveau Utilisateur</a>
+        <div class="table-responsive">
+            <table id="recent-purchases-listing" class="table">
+            <thead>
+                <tr>
+                    <th>Libelle</th> 
+                    <th>Description</th>
+                    <th>Auteur</th>
+                    <th>En Stock</th>
+                    <th>Creer le</th>
+                    <th>Modifier le</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.libelle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.autors_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.qty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.created_at)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.updated_at)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.id })  |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.id }) 
+                    </td>
+                </tr>
+                }
+            </tbody>
+            </table> 
+        </div>
+        </div>
+    </div>
+</div>

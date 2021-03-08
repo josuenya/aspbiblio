@@ -112,9 +112,9 @@
             </a>
             <div class="collapse" id="achat">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" asp-controller="Purcharses" asp-action="Index">Livres</a></li>
-                <li class="nav-item"> <a class="nav-link" asp-controller="Purcharses" asp-action="Index">Auteurs</a></li>
-                <li class="nav-item"> <a class="nav-link" asp-controller="Purcharses" asp-action="Index">Editeurs</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-controller="Books" asp-action="Index">Livres</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-controller="Autor" asp-action="Index">Auteurs</a></li>
+                <li class="nav-item"> <a class="nav-link" asp-controller="Editor" asp-action="Index">Editeurs</a></li>
 
                 <li class="nav-item"> <a class="nav-link" asp-controller="Purcharses" asp-action="Index">Mes Achats</a></li>
                 <li class="nav-item"> <a class="nav-link" >Nouveau Achats</a></li>
@@ -123,7 +123,7 @@
           </li> 
 @* <?=(isset($page) && $page == 'Produits') ? 'active' : 'hidden'?> *@
           <li class="nav-item">
-            <a class="nav-link hidden " href="#">                
+            <a class="nav-link hidden " asp-controller="Books" asp-action="catalogue">                
               <i class="mdi mdi-book-open-page-variant menu-icon"></i>
               <span class="menu-title">Consulter le Catalogue</span>
             </a>
