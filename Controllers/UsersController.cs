@@ -113,8 +113,7 @@ namespace aspbiblio.Controllers
             }   
             return View("Views/Users/Create.cshtml",lstroles);
         } 
-
-            public ActionResult Save(string email, string name,string username,string password,int roles_id,string phone)
+        public ActionResult Save(string email, string name,string username,string password,int roles_id,string phone)
         {
             using (MySqlConnection con = new MySqlConnection(connectionString))    
             {    
@@ -127,5 +126,17 @@ namespace aspbiblio.Controllers
                 return RedirectToAction("Index", "Users");
         }  
 
+        public ActionResult Delete(int id)
+        {
+        using (MySqlConnection con = new MySqlConnection(connectionString))    
+        {    
+            string query = "DELETE FROM users WHERE users.id = '"+id+"'";
+            MySqlCommand cmd = new MySqlCommand(query, con);            
+            con.Open();    
+            cmd.ExecuteNonQuery();
+            con.Close();    
+        }           
+            return RedirectToAction("Index", "Users");
+        }
     }
 }

@@ -27,9 +27,8 @@ namespace aspbiblio.Controllers
             List<Purcharse> lstachats = new List<Purcharse>();    
             using (MySqlConnection con = new MySqlConnection(connectionString))    
             {    
-                string query = "select p.*,b.libelle as libelle from purcharses p ,books b where p.books_id = b.id";
-                MySqlCommand cmd = new MySqlCommand(query, con);    
-                // cmd.CommandType = CommandType.StoredProcedure;            
+                string query = "select p.*,b.libelle as libelle from purcharses p ,books b where p.books_id = b.id order by id DESC";
+                MySqlCommand cmd = new MySqlCommand(query, con);             
                 con.Open();    
                 MySqlDataReader rdr = cmd.ExecuteReader();  
 
@@ -39,8 +38,7 @@ namespace aspbiblio.Controllers
                     purcharse.id = Convert.ToInt32(rdr["id"]);    
                     purcharse.libelle = rdr["libelle"].ToString();    
                     purcharse.buying_price = Convert.ToDecimal(rdr["buying_price"]); 
-                    purcharse.qty = Convert.ToInt32(rdr["qty"]); 
-                    
+                    purcharse.qty = Convert.ToInt32(rdr["qty"]);                     
                     // roles.created_at = rdr["created_at"];        
                     // roles.updated_at = rdr["updated_at"];        
                     lstachats.Add(purcharse);    
@@ -79,7 +77,7 @@ namespace aspbiblio.Controllers
         { 
         using (MySqlConnection con = new MySqlConnection(connectionString))    
         {    
-            string query = "INSERT INTO purcharse (`books_id`,`buying_price`,`qty`) values('"+books_id+"','"+buying_price+"','"+qty+"')";
+            string query = "INSERT INTO purcharses (`books_id`,`buying_price`,`qty`) values('"+books_id+"','"+buying_price+"','"+qty+"')";
             MySqlCommand cmd = new MySqlCommand(query, con);            
             con.Open();    
             cmd.ExecuteNonQuery();
@@ -117,7 +115,6 @@ namespace aspbiblio.Controllers
         {
             return View();
         }
-
         public ActionResult Delete(int id)
         {
         using (MySqlConnection con = new MySqlConnection(connectionString))    
