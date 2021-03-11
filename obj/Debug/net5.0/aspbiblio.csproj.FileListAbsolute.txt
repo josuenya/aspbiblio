@@ -323,3 +323,7 @@
 /home/oem/ASP/aspbiblio/obj/Debug/net5.0/Razor/Views/Books/Catalogue.cshtml.g.cs
 /home/oem/ASP/aspbiblio/obj/Debug/net5.0/Razor/Views/Loan/Create.cshtml.g.cs
 /home/oem/ASP/aspbiblio/obj/Debug/net5.0/Razor/Views/Books/Create.cshtml.g.cs
+/home/oem/ASP/aspbiblio/obj/Debug/net5.0/Razor/Views/Autor/Create.cshtml.g.cs
+/home/oem/ASP/aspbiblio/obj/Debug/net5.0/Razor/Views/Editor/Create.cshtml.g.cs
+/home/oem/ASP/aspbiblio/obj/Debug/net5.0/Razor/Views/Purcharse/index.cshtml.g.cs
+/home/oem/ASP/aspbiblio/obj/Debug/net5.0/Razor/Views/Purcharse/Create.cshtml.g.cs

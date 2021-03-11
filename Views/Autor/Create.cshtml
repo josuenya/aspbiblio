@@ -7,14 +7,14 @@
                 ici Save represente la methode qui se chargera d'enregistrer
                 les donnees dans le controller Roles
                 *@
-                @using(Html.BeginForm("Save","Roles",FormMethod.Get)){ 
+                @using(Html.BeginForm("Save","Autor",FormMethod.Get)){ 
                     <div class="form-group">
-                        <label for="libelle">Libelle</label>
-                        <input type="text" name="libelle" class="form-control" id="libelle" placeholder="Libelle">
+                        <label for="name">Nom de L'Auteur</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Nom De L'Auteur">
                     </div>
                     <div class="form-group">
-                        <label for="description">Description</label>
-                        <input type="text" name="description" class="form-control" id="description"  placeholder="Description">
+                        <label for="phone">Phone</label>
+                        <input type="text" name="phone" class="form-control" id="phone"  placeholder="Phone">
                     </div>  
                     <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
                 } 

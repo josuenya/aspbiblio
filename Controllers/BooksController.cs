@@ -29,17 +29,18 @@ namespace aspbiblio.Controllers
             return View(Getbook());
         }
 
+        //diplay all the book is saving in database
         private IEnumerable<Book> Getbook()    
-        {     
+        {   
+            //creation d'une liste de book
             List<Book> lstbooks = new List<Book>();    
             using (MySqlConnection con = new MySqlConnection(connectionString))    
             {    
                 string query = "select * from books_autors ba,books b,autors a where ba.books_id = b.id and ba.autors_id = a.id";
-                MySqlCommand cmd = new MySqlCommand(query, con);    
-                //cmd.CommandType = CommandType.StoredProcedure;            
+                MySqlCommand cmd = new MySqlCommand(query, con);            
                 con.Open();    
                 MySqlDataReader result = cmd.ExecuteReader();  
-    
+
                 while (result.Read())    
                 {    
                     Book books = new Book(); 
@@ -59,7 +60,6 @@ namespace aspbiblio.Controllers
         }
 
         //Permet d'afficher le formulaire d'ajout des livres
-        
         public IActionResult Create()
         {
             List<Editor> lsteditor = new List<Editor>();    
@@ -83,23 +83,31 @@ namespace aspbiblio.Controllers
             return View("Views/Books/Create.cshtml",lsteditor);
         }
 
-        [HttpPost]
-        public ActionResult Save(Book book)
-        {            
-            return View();
+        //enregistrement des des donnees provenant du formulaire en base de donnee
+        public ActionResult Save(String libelle, String description,int qty,int editors_id)
+        { 
+            using (MySqlConnection con = new MySqlConnection(connectionString))    
+            {    
+                string query = "INSERT INTO books (`libelle`,`description`,`qty`,`editors_id`) values('"+libelle+"','"+description+"','"+qty+"','"+editors_id+"')";
+                MySqlCommand cmd = new MySqlCommand(query, con);            
+                con.Open();    
+                cmd.ExecuteNonQuery();
+                con.Close();    
+            }           
+            return RedirectToAction("Index", "Books");
         }
-        //Affiche la liste de tous les catalogue des livres
+
+        //Affiche la liste de tous les livres
         public IActionResult catalogue()
         {
+            ViewBag.Title = "Nos Catalogues"; 
             List<Book> lstcatalogue = new List<Book>();    
             using (MySqlConnection con = new MySqlConnection(connectionString))    
             {    
                 string query = "select * from books";
-                MySqlCommand cmd = new MySqlCommand(query, con);    
-                //cmd.CommandType = CommandType.StoredProcedure;            
+                MySqlCommand cmd = new MySqlCommand(query, con);             
                 con.Open();    
                 MySqlDataReader result = cmd.ExecuteReader();  
-    
                 while (result.Read())    
                 {    
                     Book books = new Book(); 
@@ -114,7 +122,6 @@ namespace aspbiblio.Controllers
                 }    
                 con.Close();    
             }    
-                ViewBag.Title = "Nos Catalogues"; 
 
             return View("Views/Books/Catalogue.cshtml",lstcatalogue);
         }

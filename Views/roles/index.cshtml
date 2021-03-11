@@ -6,7 +6,7 @@
     <div class="card">
       <div class="card-body">
         @* <p class="card-title"></p> *@
-        <a asp-action="Create" class="btn btn-primary">Ajouter Un Nouveau Role</a>
+        <a asp-action="Create" class="btn btn-primary"> <span><i class="mdi mdi-plus"></i></span>Ajouter Un Nouveau Role</a>
         <div class="table-responsive">
           <table id="recent-purchases-listing" class="table">
             <thead>
@@ -21,24 +21,22 @@
             <tbody>
               @foreach (var item in Model) {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.libelle)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.created_at)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.updated_at)
-                    </td>
-                    <td>
-                      <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                      <a asp-action="Delete" asp-route-id="@item.id">Delete</a> |
-
-                        @* @Html.ActionLink("Delete", "Delete", new { id=item.id })  *@
-                    </td>
+                  <td>
+                      @Html.DisplayFor(modelItem => item.libelle)
+                  </td>
+                  <td>
+                      @Html.DisplayFor(modelItem => item.description)
+                  </td>
+                  <td>
+                      @Html.DisplayFor(modelItem => item.created_at)
+                  </td>
+                  <td>
+                      @Html.DisplayFor(modelItem => item.updated_at)
+                  </td>
+                  <td>
+                    <a asp-action="Edit" asp-route-id="@item.id"><span><i class=" mdi mdi-border-color btn btn-primary "></i></span></a>
+                    <a asp-action="Delete" asp-route-id="@item.id"><span><i class="mdi mdi-delete btn btn-danger "></i></span></a>
+                  </td>
                 </tr>
               }
             </tbody>

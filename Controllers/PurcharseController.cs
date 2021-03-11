@@ -11,23 +11,23 @@ using aspbiblio.Models;
 
 namespace aspbiblio.Controllers
 {
-    public class RolesController : Controller
+    public class PurcharseController : Controller
     {
         private string connectionString = "server=localhost; database=mybookshop; uid=root; pwd=;SslMode = none";
             
         public IActionResult Index()
         { 
-            ViewBag.Title = "Roles"; 
-            return View(getroles());
+            ViewBag.Title = "Mes Achats"; 
+            return View(getachats());
         } 
         
         //Diplay all roles users in database
-        private IEnumerable<Role> getroles()    
+        private IEnumerable<Purcharse> getachats()    
         {     
-            List<Role> lstroles = new List<Role>();    
+            List<Purcharse> lstachats = new List<Purcharse>();    
             using (MySqlConnection con = new MySqlConnection(connectionString))    
             {    
-                string query = "select * from roles";
+                string query = "select p.*,b.libelle as libelle from purcharses p ,books b where p.books_id = b.id";
                 MySqlCommand cmd = new MySqlCommand(query, con);    
                 // cmd.CommandType = CommandType.StoredProcedure;            
                 con.Open();    
@@ -35,37 +35,39 @@ namespace aspbiblio.Controllers
 
                 while (rdr.Read())    
                 {    
-                    Role roles = new Role(); 
-                    roles.id = Convert.ToInt32(rdr["id"]);    
-                    roles.libelle = rdr["libelle"].ToString();    
-                    roles.description = rdr["description"].ToString(); 
+                    Purcharse purcharse = new Purcharse(); 
+                    purcharse.id = Convert.ToInt32(rdr["id"]);    
+                    purcharse.libelle = rdr["libelle"].ToString();    
+                    purcharse.buying_price = Convert.ToDecimal(rdr["buying_price"]); 
+                    purcharse.qty = Convert.ToInt32(rdr["qty"]); 
+                    
                     // roles.created_at = rdr["created_at"];        
                     // roles.updated_at = rdr["updated_at"];        
-                    lstroles.Add(roles);    
+                    lstachats.Add(purcharse);    
                 }    
                 con.Close();    
             }    
-            return lstroles;    
+            return lstachats;    
         } 
 
         public ActionResult Create()
         {
-            ViewBag.Title = "Creation d'un Nouveau Role"; 
+            ViewBag.Title = "Nouveau Achat"; 
             return View();
         } 
 
         //enregistrement des roles utilisateurs venant du formulaire
-        public ActionResult Save(String libelle, String description)
+        public ActionResult Save(String books_id, decimal buying_price,int qty)
         { 
         using (MySqlConnection con = new MySqlConnection(connectionString))    
         {    
-            string query = "INSERT INTO roles (`libelle`,`description`) values('"+libelle+"','"+description+"')";
+            string query = "INSERT INTO purcharse (`books_id`,`buying_price`,`qty`) values('"+books_id+"','"+buying_price+"','"+qty+"')";
             MySqlCommand cmd = new MySqlCommand(query, con);            
             con.Open();    
             cmd.ExecuteNonQuery();
             con.Close();    
         }           
-            return RedirectToAction("Index", "Roles");
+            return RedirectToAction("Index", "Purcharse");
         }
 
         public ActionResult Edit(int? id)
@@ -102,13 +104,13 @@ namespace aspbiblio.Controllers
         {
         using (MySqlConnection con = new MySqlConnection(connectionString))    
         {    
-            string query = "DELETE FROM roles WHERE roles.id = '"+id+"'";
+            string query = "DELETE FROM purcharses WHERE purcharses.id = '"+id+"'";
             MySqlCommand cmd = new MySqlCommand(query, con);            
             con.Open();    
             cmd.ExecuteNonQuery();
             con.Close();    
         }           
-            return RedirectToAction("Index", "Roles");
+            return RedirectToAction("Index", "Purcharse");
         }
     }
 }

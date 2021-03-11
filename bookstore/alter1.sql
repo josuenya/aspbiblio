@@ -1,0 +1,1 @@
+alter table purcharses add qty int after buying_price;

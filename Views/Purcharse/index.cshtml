@@ -1,40 +1,33 @@
-
-@model IEnumerable<aspbiblio.Models.Book>
-
+@model IEnumerable<aspbiblio.Models.Purcharse>
 <div class="row">
     <div class="col-md-12 stretch-card">
-    <div class="card">
+        <div class="card">
         <div class="card-body">
-        @* <p class="card-title"></p> *@
-        <a asp-controller="Books" asp-action="Create" class="btn btn-primary"><span><i class="mdi mdi-plus"></i></span>Ajouter Un Nouveau Livre</a>
-        <div class="table-responsive">
-            <table id="recent-purchases-listing" class="table">
-            <thead>
+            @* <p class="card-title"></p> *@
+            <a asp-action="Create" class="btn btn-primary"> <span><i class="mdi mdi-plus"></i></span>Ajouter Un Nouveau Role</a>
+            <div class="table-responsive">
+            <table id="recent-purchases-listing" class="table"> 
+                <thead>
                 <tr>
-                    <th>Libelle</th> 
-                    <th>Description</th>
-                    <th>Auteur</th>
-                    <th>En Stock</th>
-                    <th>Creer le</th>
-                    <th>Modifier le</th>
+                    <th>Nom du Livres</th> 
+                    <th>Quantite Acheter</th>
+                    <th>Prix d'achat</th>
+                    <th>Jour D'achat</th>
+                    <th>Jour de Modification</th>
                     <th>Action</th>
-
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 @foreach (var item in Model) {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.libelle)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.autors_name)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.qty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.buying_price)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.created_at)
@@ -48,9 +41,11 @@
                 </td>
                 </tr>
                 }
-            </tbody>
-            </table> 
+                </tbody>
+            </table>
+            </div>
         </div>
         </div>
+    </div>
     </div>
 </div>

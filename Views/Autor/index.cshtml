@@ -1,4 +1,3 @@
- 
 @model IEnumerable<aspbiblio.Models.Autor>
 
 <div class="row">
@@ -6,7 +5,7 @@
     <div class="card">
       <div class="card-body">
         @* <p class="card-title"></p> *@
-        <a asp-controller="Users" asp-action="Create" class="btn btn-primary">Ajouter Un Nouveau Auteur de livre</a>
+        <a asp-controller="Autor" asp-action="Create" class="btn btn-primary"><span><i class="mdi mdi-plus"></i></span>Ajouter Un Nouveau Auteur de livre</a>
         <div class="table-responsive">
           <table id="recent-purchases-listing" class="table">
             <thead>
@@ -34,14 +33,14 @@
                         @Html.DisplayFor(modelItem => item.updated_at)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id=item.id }) 
-                    </td>
+                      <a asp-action="Edit" asp-route-id="@item.id"><span><i class=" mdi mdi-border-color btn btn-primary "></i></span></a>
+                      <a asp-action="Delete" asp-route-id="@item.id"><span><i class="mdi mdi-delete btn btn-danger "></i></span></a>
+                  </td>
                 </tr>
               }
             </tbody>
           </table>
         </div>
       </div>
-    </div>
+  </div>
 </div>

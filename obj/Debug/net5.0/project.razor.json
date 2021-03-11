@@ -15618,6 +15618,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Purcharse/Create.cshtml",
+      "TargetPath": "Views\\Purcharse\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/oem/ASP/aspbiblio/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -15635,6 +15640,11 @@
     {
       "FilePath": "/home/oem/ASP/aspbiblio/Views/roles/edit.cshtml",
       "TargetPath": "Views\\roles\\edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Autor/Create.cshtml",
+      "TargetPath": "Views\\Autor\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15715,6 +15725,16 @@
     {
       "FilePath": "/home/oem/ASP/aspbiblio/Views/_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Editor/Create.cshtml",
+      "TargetPath": "Views\\Editor\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Purcharse/index.cshtml",
+      "TargetPath": "Views\\Purcharse\\index.cshtml",
       "FileKind": "mvc"
     },
     {
