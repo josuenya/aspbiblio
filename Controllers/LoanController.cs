@@ -51,6 +51,12 @@ namespace aspbiblio.Controllers
                 return View(GetLoan());
             } 
 
+             //To create View of this Action result                
+            public ActionResult Create()
+            {
+                return View();
+            } 
+
     }
 
 }

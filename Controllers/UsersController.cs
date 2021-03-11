@@ -55,7 +55,7 @@ namespace aspbiblio.Controllers
                         users.roles = result["roles"].ToString();
                         users.created_at = Convert.ToDateTime(result["created_at"]);             
                         users.updated_at = Convert.ToDateTime(result["updated_at"]);           
-                        lstusers.Add(users);    
+                        lstusers.Add(users);     
                     }    
                     con.Close();    
                 }    

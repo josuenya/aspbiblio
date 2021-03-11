@@ -1,5 +1,5 @@
 {
-  "FilePath": "/home/oem/aspbiblio/aspbiblio.csproj",
+  "FilePath": "/home/oem/ASP/aspbiblio/aspbiblio.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -15603,93 +15603,123 @@
   "RootNamespace": "aspbiblio",
   "Documents": [
     {
-      "FilePath": "/home/oem/aspbiblio/Views/roles/edit.cshtml",
-      "TargetPath": "Views\\roles\\edit.cshtml",
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/users/Create.cshtml",
+      "TargetPath": "Views\\users\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/oem/aspbiblio/Views/_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Books/Catalogue.cshtml",
+      "TargetPath": "Views\\Books\\Catalogue.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/oem/aspbiblio/Views/Auth/Login.cshtml",
-      "TargetPath": "Views\\Auth\\Login.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/oem/aspbiblio/Views/Shared/Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/oem/aspbiblio/Views/_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/oem/aspbiblio/Views/Shared/_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/oem/aspbiblio/Views/users/index.cshtml",
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/users/index.cshtml",
       "TargetPath": "Views\\users\\index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/oem/aspbiblio/Views/Livres/Privacy.cshtml",
-      "TargetPath": "Views\\Livres\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/oem/aspbiblio/Views/users/Edit.cshtml",
-      "TargetPath": "Views\\users\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/oem/aspbiblio/Views/roles/index.cshtml",
-      "TargetPath": "Views\\roles\\index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/oem/aspbiblio/Views/Home/Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/oem/aspbiblio/Views/Livres/Index.cshtml",
-      "TargetPath": "Views\\Livres\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/oem/aspbiblio/Views/Loan/index.cshtml",
-      "TargetPath": "Views\\Loan\\index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/oem/aspbiblio/Views/Tasks/index.cshtml",
-      "TargetPath": "Views\\Tasks\\index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/oem/aspbiblio/Views/roles/create.cshtml",
-      "TargetPath": "Views\\roles\\create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/oem/aspbiblio/Views/Home/Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/oem/aspbiblio/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/oem/aspbiblio/Views/users/Create.cshtml",
-      "TargetPath": "Views\\users\\Create.cshtml",
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/roles/index.cshtml",
+      "TargetPath": "Views\\roles\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/roles/edit.cshtml",
+      "TargetPath": "Views\\roles\\edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Loan/index.cshtml",
+      "TargetPath": "Views\\Loan\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Tasks/index.cshtml",
+      "TargetPath": "Views\\Tasks\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Auth/Login.cshtml",
+      "TargetPath": "Views\\Auth\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Livres/Index.cshtml",
+      "TargetPath": "Views\\Livres\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Loan/Create.cshtml",
+      "TargetPath": "Views\\Loan\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Books/index.cshtml",
+      "TargetPath": "Views\\Books\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/users/Edit.cshtml",
+      "TargetPath": "Views\\users\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/roles/create.cshtml",
+      "TargetPath": "Views\\roles\\create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Home/Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Books/Create.cshtml",
+      "TargetPath": "Views\\Books\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Editor/index.cshtml",
+      "TargetPath": "Views\\Editor\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Autor/index.cshtml",
+      "TargetPath": "Views\\Autor\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Shared/_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Shared/Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Home/Privacy.cshtml",
+      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Livres/Privacy.cshtml",
+      "TargetPath": "Views\\Livres\\Privacy.cshtml",
       "FileKind": "mvc"
     }
   ],

@@ -1,0 +1,39 @@
+@model IEnumerable<aspbiblio.Models.Editor>
+@* @{
+    Layout = null;
+} *@
+<div class="row">
+    <div class="col-md-12 stretch-card">
+    <div class="card">
+        <div class="card-body">
+        @using(Html.BeginForm("Save","Books",FormMethod.Post)){ 
+            <div class="form-group">
+                <label for="libelle">Libelle</label>
+                <input type="text" class="form-control"  name="libelle" id="libelle" placeholder="Libelle">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" name="description" id="description" placeholder="Description">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Quantity</label>
+                <input type="int" class="form-control" name="qty" id="qty" placeholder="Quantite">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect3">Nom de l'Editeur</label>
+                <select class="form-control form-control-sm" name="editors_id" id="editors_id">
+                    <option value="">Nom d'Editeur du Livre</option>
+                    @foreach (var item in Model) {            
+                        <option value="@Html.DisplayFor(modelItem => item.id)">@Html.DisplayFor(modelItem => item.name)</option>
+                    }
+                </select>
+            </div>  
+            <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+         }
+        @* <form method="post" class="forms-sample">
+           
+        </form> *@
+        </div>
+    </div>
+    </div>
+</div>

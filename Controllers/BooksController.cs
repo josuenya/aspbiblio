@@ -15,7 +15,6 @@ namespace aspbiblio.Controllers
 {
     public class BooksController : Controller
     {
-
         private string connectionString = "server=localhost; database=mybookshop; uid=root; pwd=;SslMode = none";
 
         private readonly ApplicationDbContext db;
@@ -59,7 +58,37 @@ namespace aspbiblio.Controllers
             return lstbooks;    
         }
 
+        //Permet d'afficher le formulaire d'ajout des livres
+        
+        public IActionResult Create()
+        {
+            List<Editor> lsteditor = new List<Editor>();    
+            using (MySqlConnection con = new MySqlConnection(connectionString))    
+            {    
+                string query = "select * from editors";
+                MySqlCommand cmd = new MySqlCommand(query, con);    
+                //cmd.CommandType = CommandType.StoredProcedure;            
+                con.Open();    
+                MySqlDataReader result = cmd.ExecuteReader();  
+    
+                while (result.Read())    
+                {    
+                    Editor editors = new Editor(); 
+                    editors.id = Convert.ToInt32(result["id"]);    
+                    editors.name = result["name"].ToString(); 
+                    lsteditor.Add(editors);    
+                }    
+                con.Close();    
+            }   
+            return View("Views/Books/Create.cshtml",lsteditor);
+        }
 
+        [HttpPost]
+        public ActionResult Save(Book book)
+        {            
+            return View();
+        }
+        //Affiche la liste de tous les catalogue des livres
         public IActionResult catalogue()
         {
             List<Book> lstcatalogue = new List<Book>();    
