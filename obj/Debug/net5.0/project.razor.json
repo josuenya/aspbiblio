@@ -15623,6 +15623,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/roles/Create.cshtml",
+      "TargetPath": "Views\\roles\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/oem/ASP/aspbiblio/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -15633,13 +15638,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/oem/ASP/aspbiblio/Views/_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Auth/Register.cshtml",
+      "TargetPath": "Views\\Auth\\Register.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/oem/ASP/aspbiblio/Views/roles/edit.cshtml",
-      "TargetPath": "Views\\roles\\edit.cshtml",
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15683,11 +15688,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/oem/ASP/aspbiblio/Views/roles/create.cshtml",
-      "TargetPath": "Views\\roles\\create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/home/oem/ASP/aspbiblio/Views/Home/Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -15700,6 +15700,11 @@
     {
       "FilePath": "/home/oem/ASP/aspbiblio/Views/Editor/index.cshtml",
       "TargetPath": "Views\\Editor\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/roles/Edit.cshtml",
+      "TargetPath": "Views\\roles\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {

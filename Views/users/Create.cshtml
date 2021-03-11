@@ -1,38 +1,37 @@
+@model IEnumerable<aspbiblio.Models.Role>
+
 <div class="row">
   <div class="col-md-12 stretch-card">
     <div class="card">
-      <div class="card-body">
-<form class="forms-sample">
+    <div class="card-body">
+    @using(Html.BeginForm("Save","Users",FormMethod.Post)){ 
     <div class="form-group">
-        <label for="exampleInputUsername1">Name</label>
-        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Nom">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" name="name" id="name" placeholder="Nom">
     </div>
     <div class="form-group">
-        <label for="exampleInputUsername1">Prenom</label>
-        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Prenom">
+        <label for="username">Prenom</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Prenom">
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Adresse Mail</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        <label for="email">Adresse Mail</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
     </div>
     <div class="form-group">
-        <label for="exampleFormControlSelect3">Role</label>
-        <select class="form-control form-control-sm" id="exampleFormControlSelect3">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
+        <label for="roles_id">Role</label>
+        <select class="form-control form-control-sm" name="roles_id" id="roles_id">
+            <option>Selectioner un Role</option>
+            @foreach (var item in Model) {            
+                <option value="@item.id">@Html.DisplayFor(modelItem => item.libelle)</option>
+            }
         </select>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputConfirmPassword1">Confirm Password</label>
-        <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
-    </div>    
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+    </div>   
     <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
-</form>
+    }
 </div>
 </div>
 </div>

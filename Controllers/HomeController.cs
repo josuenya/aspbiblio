@@ -13,7 +13,7 @@ namespace aspbiblio.Controllers
 {
     public class HomeController : Controller
     {
-       private readonly ApplicationDbContext db;
+        private readonly ApplicationDbContext db;
 
         public HomeController(ApplicationDbContext db)
         {
@@ -22,13 +22,9 @@ namespace aspbiblio.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Title = "Dashboard"; 
             return View();
         }
 
-        // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        // public IActionResult Error()
-        // {
-        //     return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        // }
     }
 }

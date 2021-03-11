@@ -26,110 +26,106 @@ namespace aspbiblio.Controllers
         //connect to mysql database
         private string connectionString = "server=localhost; database=mybookshop; uid=root; pwd=;SslMode = none";
 
-            public IActionResult Index()
-            { 
-                ViewBag.Title = "users"; 
-                return View(Getusers());
-            } 
+        public IActionResult Index()
+        { 
+            ViewBag.Title = "users"; 
+            return View(Getusers());
+        } 
 
-            //To View all Users details      
-            private IEnumerable<Users> Getusers()    
-            {     
-                List<Users> lstusers = new List<Users>();    
-                using (MySqlConnection con = new MySqlConnection(connectionString))    
+        //To View all Users details      
+        private IEnumerable<Users> Getusers()    
+        {     
+            List<Users> lstusers = new List<Users>();    
+            using (MySqlConnection con = new MySqlConnection(connectionString))    
+            {    
+                string query = "select u.*,r.libelle as roles from users u,roles r where u.roles_id = r.id";
+                MySqlCommand cmd = new MySqlCommand(query, con);    
+                //cmd.CommandType = CommandType.StoredProcedure;            
+                con.Open();    
+                MySqlDataReader result = cmd.ExecuteReader();  
+    
+                while (result.Read())    
                 {    
-                    string query = "select u.*,r.libelle as roles from users u,roles r where u.roles_id = r.id";
-                    MySqlCommand cmd = new MySqlCommand(query, con);    
-                    //cmd.CommandType = CommandType.StoredProcedure;            
-                    con.Open();    
-                    MySqlDataReader result = cmd.ExecuteReader();  
-        
-                    while (result.Read())    
-                    {    
-                        Users users = new Users(); 
-                        users.id = Convert.ToInt32(result["id"]);    
-                        users.name = result["name"].ToString();    
-                        users.username = result["username"].ToString();    
-                        users.phone = result["phone"].ToString();    
-                        users.email = result["email"].ToString(); 
-                        users.roles = result["roles"].ToString();
-                        users.created_at = Convert.ToDateTime(result["created_at"]);             
-                        users.updated_at = Convert.ToDateTime(result["updated_at"]);           
-                        lstusers.Add(users);     
-                    }    
-                    con.Close();    
+                    Users users = new Users(); 
+                    users.id = Convert.ToInt32(result["id"]);    
+                    users.name = result["name"].ToString();    
+                    users.username = result["username"].ToString();    
+                    users.phone = result["phone"].ToString();    
+                    users.email = result["email"].ToString(); 
+                    users.roles = result["roles"].ToString();
+                    users.created_at = Convert.ToDateTime(result["created_at"]);             
+                    users.updated_at = Convert.ToDateTime(result["updated_at"]);           
+                    lstusers.Add(users);     
                 }    
-                return lstusers;    
-            }   
+                con.Close();    
+            }    
+            return lstusers;    
+        }   
 
         public ActionResult Edit(int? id)
+    {
+
+        if (id == null)
         {
+            return NotFound();
+        }
+        var arlistuser = new ArrayList();
 
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var arlistuser = new ArrayList();
-
-            using (MySqlConnection con = new MySqlConnection(connectionString))
-            { 
-                string query = "select * from users u where u.id = id";
+        using (MySqlConnection con = new MySqlConnection(connectionString))
+        { 
+            string query = "select * from users u where u.id = id";
+            MySqlCommand cmd = new MySqlCommand(query, con);    
+            // cmd.CommandType = CommandType.StoredProcedure;            
+            con.Open();    
+            MySqlDataReader result = cmd.ExecuteReader(); 
+                while (result.Read())    
+                {   
+                    arlistuser.Add(result[0]);
+                    arlistuser.Add(result[0]);
+                    arlistuser.Add(result[0]);
+                    arlistuser.Add(result[0]);
+                }    
+                con.Close(); 
+        
+        }
+        return View(arlistuser);
+    }
+        //To create View of this Action result                
+        public ActionResult Create()
+        {
+            List<Role> lstroles = new List<Role>();    
+            using (MySqlConnection con = new MySqlConnection(connectionString))    
+            {    
+                string query = "select * from roles";
                 MySqlCommand cmd = new MySqlCommand(query, con);    
-                // cmd.CommandType = CommandType.StoredProcedure;            
+                //cmd.CommandType = CommandType.StoredProcedure;            
                 con.Open();    
-                MySqlDataReader result = cmd.ExecuteReader(); 
-                  while (result.Read())    
-                    {   
-                        arlistuser.Add(result[0]);
-                        arlistuser.Add(result[0]);
-                        arlistuser.Add(result[0]);
-                        arlistuser.Add(result[0]);
-                    }    
-                    con.Close(); 
-            
-            }
-            return View(arlistuser);
-        }
-            //To create View of this Action result                
-            public ActionResult Create()
-            {
-                return View();
-            } 
-            // []
-            public bool Save(string[] Param)
-            {
-            //string connsString = config.GetConnectionString("MyKey");// "Data Source=PRO-ACQER8AM;Initial Catalog=CrudDB;Integrated Security=True;";  
-                using (MySqlConnection con = new MySqlConnection(connectionString))  
-                {  
-                    con.Open();  
-                    using (MySqlCommand command = new MySqlCommand($"INSERT INTO mybookshop (email,roles_id,name,username,passwword,created_at,phone) VALUES ('{Param[0]}','{Param[1]}',getdate(),'{Param[3]}')", con))  
-                    {  
-                        try  
-                        {  
-                            var result = command.ExecuteNonQuery();  
-                            if (result > 0)  
-                            {  
-                                return true;  
-                            }  
-                        }  
-                        catch (Exception)  
-                        {  
+                MySqlDataReader result = cmd.ExecuteReader();  
     
-                        }  
-                        finally  
-                        {  
-                            con.Close();  
-                        }  
-                        return false;  
-                    }  
-                }  
-            }  
+                while (result.Read())    
+                {    
+                    Role role = new Role(); 
+                    role.id = Convert.ToInt32(result["id"]);    
+                    role.libelle = result["libelle"].ToString(); 
+                    lstroles.Add(role);    
+                }    
+                con.Close();    
+            }   
+            return View("Views/Users/Create.cshtml",lstroles);
+        } 
 
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+            public ActionResult Save(string email, string name,string username,string password,int roles_id,string phone)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+            using (MySqlConnection con = new MySqlConnection(connectionString))    
+            {    
+                string query = "INSERT INTO users (`email`,`roles_id`,`name`,`username`,`password`,`phone`) values('"+email+"','"+roles_id+"','"+name+"','"+username+"','"+password+"','"+phone+"')";
+                MySqlCommand cmd = new MySqlCommand(query, con);            
+                con.Open();    
+                cmd.ExecuteNonQuery();
+                con.Close();    
+            }           
+                return RedirectToAction("Index", "Users");
+        }  
+
     }
 }

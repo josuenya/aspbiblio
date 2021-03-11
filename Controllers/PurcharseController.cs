@@ -53,7 +53,25 @@ namespace aspbiblio.Controllers
         public ActionResult Create()
         {
             ViewBag.Title = "Nouveau Achat"; 
-            return View();
+            List<Book> lstbook = new List<Book>();    
+            using (MySqlConnection con = new MySqlConnection(connectionString))    
+            {    
+                string query = "select * from books";
+                MySqlCommand cmd = new MySqlCommand(query, con);    
+                //cmd.CommandType = CommandType.StoredProcedure;            
+                con.Open();    
+                MySqlDataReader result = cmd.ExecuteReader();  
+    
+                while (result.Read())    
+                {    
+                    Book book = new Book(); 
+                    book.id = Convert.ToInt32(result["id"]);    
+                    book.libelle = result["libelle"].ToString(); 
+                    lstbook.Add(book);    
+                }    
+                con.Close();    
+            }   
+            return View("Views/Purcharse/Create.cshtml",lstbook);
         } 
 
         //enregistrement des roles utilisateurs venant du formulaire
@@ -112,5 +130,6 @@ namespace aspbiblio.Controllers
         }           
             return RedirectToAction("Index", "Purcharse");
         }
+    
     }
 }

@@ -17,6 +17,11 @@ namespace aspbiblio.Controllers
         
         private string connectionString = "server=localhost; database=mybookshop; uid=root; pwd=;SslMode = none";
 
+            public IActionResult Index()
+            {
+                return View(GetLoan());
+            } 
+
             //To View all Users details      
             private IEnumerable<Loan> GetLoan()    
             {     
@@ -44,12 +49,6 @@ namespace aspbiblio.Controllers
                 }    
                 return lstloan;    
             }   
-
-
-            public IActionResult Index()
-            {
-                return View(GetLoan());
-            } 
 
              //To create View of this Action result                
             public ActionResult Create()

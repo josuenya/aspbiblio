@@ -16,7 +16,6 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="~/css/site.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
 </head>
 <body>
   <div class="container-scroller">
@@ -117,11 +116,10 @@
                 <li class="nav-item"> <a class="nav-link" asp-controller="Editor" asp-action="Index">Editeurs</a></li>
 
                 <li class="nav-item"> <a class="nav-link" asp-controller="Purcharse" asp-action="Index">Mes Achats</a></li>
-                <li class="nav-item"> <a class="nav-link" >Nouveau Achats</a></li>
               </ul>
             </div>
           </li> 
-@* <?=(isset($page) && $page == 'Produits') ? 'active' : 'hidden'?> *@
+          @* <?=(isset($page) && $page == 'Produits') ? 'active' : 'hidden'?> *@
           <li class="nav-item">
             <a class="nav-link hidden " asp-controller="Books" asp-action="catalogue">                
               <i class="mdi mdi-book-open-page-variant menu-icon"></i>
