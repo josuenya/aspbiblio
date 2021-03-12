@@ -72,7 +72,7 @@ namespace aspbiblio.Controllers
         {
             ViewBag.Title = "Modification"; 
             if (id == null) return NotFound();
-            List<Role> lstroles = new List<Role>();
+            Role role = new Role();
             using (MySqlConnection con = new MySqlConnection(connectionString))    
             {    
                 string query = "select * from roles r where r.id='"+id+"' ";
@@ -81,21 +81,27 @@ namespace aspbiblio.Controllers
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())    
                 {    
-                    Role roles = new Role(); 
-                    roles.id = Convert.ToInt32(rdr["id"]);    
-                    roles.libelle = rdr["libelle"].ToString();    
-                    roles.description = rdr["description"].ToString(); 
+                    role.id = Convert.ToInt32(rdr["id"]);    
+                    role.libelle = rdr["libelle"].ToString();    
+                    role.description = rdr["description"].ToString(); 
                     // roles.created_at = rdr["created_at"];        
-                    // roles.updated_at = rdr["updated_at"];        
-                    lstroles.Add(roles);    
+                    // roles.updated_at = rdr["updated_at"];  
                 }  
             }
-            return View(lstroles);
+            return View(role);
         }
 
-        public ActionResult Update()
+        public ActionResult Update(string libelle,string description,int id)
         {
-            return View();
+            using (MySqlConnection con = new MySqlConnection(connectionString))    
+        {    
+            string query = "UPDATE roles  SET `libelle` = '"+libelle+"', `description` = '"+description+"' WHERE roles.id = '"+id+"'";
+            MySqlCommand cmd = new MySqlCommand(query, con);            
+            con.Open();    
+            cmd.ExecuteNonQuery();
+            con.Close();    
+        } 
+        return RedirectToAction("Index", "Roles");
         }
 
         public ActionResult Delete(int id)
