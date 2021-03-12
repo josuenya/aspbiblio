@@ -1,22 +1,22 @@
 @model aspbiblio.Models.Role
 
 <div class="row">
-    <div class="col-md-12 stretch-card">
-      <div class="card">
-        <div class="card-body">
-      @using(Html.BeginForm("Update","Roles",FormMethod.Post)){ 
-      <div class="form-group">
-          <label for="libelle">Libelle</label>
-          <input type="text" class="form-control" name="libelle" id="libelle" value="@Html.DisplayFor(m => m.libelle)" placeholder="Libelle">
+  <div class="col-md-12 stretch-card">
+    <div class="card">
+      <div class="card-body">
+        @using(Html.BeginForm("Update","Roles",FormMethod.Post)){ 
+          <div class="form-group">
+            <label for="libelle">Libelle</label>
+            <input type="text" class="form-control" name="libelle" id="libelle" value="@Html.DisplayFor(m => m.libelle)" placeholder="Libelle">
+          </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input type="text" value="@Html.DisplayFor(m => m.description)" class="form-control" name="description" id="description" placeholder="Description">
+              <input hidden type="text" value="@Html.DisplayFor(m => m.id)" class="form-control" name="id" id="id" placeholder="ID">
+          </div>
+          <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+        }
       </div>
-      <div class="form-group">
-          <label for="description">Description</label>
-          <input type="text" value="@Html.DisplayFor(m => m.description)" class="form-control" name="description" id="description" placeholder="Description">
-          <input hidden type="text" value="@Html.DisplayFor(m => m.id)" class="form-control" name="id" id="id" placeholder="ID">
-      </div>
-      <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
-  }
-  </div>
-  </div>
+    </div>
   </div>
 </div>

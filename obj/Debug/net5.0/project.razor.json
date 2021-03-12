@@ -15663,6 +15663,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/oem/ASP/aspbiblio/Views/Autor/Edit.cshtml",
+      "TargetPath": "Views\\Autor\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/oem/ASP/aspbiblio/Views/Auth/Login.cshtml",
       "TargetPath": "Views\\Auth\\Login.cshtml",
       "FileKind": "mvc"

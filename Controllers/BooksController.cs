@@ -49,8 +49,8 @@ namespace aspbiblio.Controllers
                     books.description = result["description"].ToString();
                     books.qty = Convert.ToInt32(result["qty"]);         
                     books.autors_name = result["name"].ToString();          
-                    books.created_at = Convert.ToDateTime(result["created_at"]);             
-                    books.updated_at = Convert.ToDateTime(result["updated_at"]);             
+                    // books.created_at = Convert.ToDateTime(result["created_at"]);             
+                    // books.updated_at = Convert.ToDateTime(result["updated_at"]);             
                     
                     lstbooks.Add(books);    
                 }    

@@ -39,8 +39,8 @@ namespace aspbiblio.Controllers
                     roles.id = Convert.ToInt32(rdr["id"]);    
                     roles.libelle = rdr["libelle"].ToString();    
                     roles.description = rdr["description"].ToString(); 
-                    // roles.created_at = rdr["created_at"];        
-                    // roles.updated_at = rdr["updated_at"];        
+                    // roles.created_at = Convert.ToDateTime(rdr["created_at"]);        
+                    // roles.updated_at = Convert.ToDateTime(rdr["updated_at"]);        
                     lstroles.Add(roles);    
                 }    
                 con.Close();    
@@ -83,9 +83,7 @@ namespace aspbiblio.Controllers
                 {    
                     role.id = Convert.ToInt32(rdr["id"]);    
                     role.libelle = rdr["libelle"].ToString();    
-                    role.description = rdr["description"].ToString(); 
-                    // roles.created_at = rdr["created_at"];        
-                    // roles.updated_at = rdr["updated_at"];  
+                    role.description = rdr["description"].ToString();                      
                 }  
             }
             return View(role);
@@ -94,14 +92,14 @@ namespace aspbiblio.Controllers
         public ActionResult Update(string libelle,string description,int id)
         {
             using (MySqlConnection con = new MySqlConnection(connectionString))    
-        {    
-            string query = "UPDATE roles  SET `libelle` = '"+libelle+"', `description` = '"+description+"' WHERE roles.id = '"+id+"'";
-            MySqlCommand cmd = new MySqlCommand(query, con);            
-            con.Open();    
-            cmd.ExecuteNonQuery();
-            con.Close();    
-        } 
-        return RedirectToAction("Index", "Roles");
+            {    
+                string query = "UPDATE roles  SET `libelle` = '"+libelle+"', `description` = '"+description+"' WHERE roles.id = '"+id+"'";
+                MySqlCommand cmd = new MySqlCommand(query, con);            
+                con.Open();    
+                cmd.ExecuteNonQuery();
+                con.Close();    
+            } 
+                return RedirectToAction("Index", "Roles");
         }
 
         public ActionResult Delete(int id)

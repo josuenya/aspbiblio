@@ -41,8 +41,8 @@ namespace aspbiblio.Controllers
                         loan.libelle = result["libelle"].ToString();
                         loan.status = result["statut"].ToString();    
                         loan.return_date = Convert.ToDateTime(result["return_date"]);             
-                        loan.created_at = Convert.ToDateTime(result["return_date"]); 
-                        loan.updated_at = Convert.ToDateTime(result["updated_at"]);    
+                        // loan.created_at = Convert.ToDateTime(result["return_date"]); 
+                        // loan.updated_at = Convert.ToDateTime(result["updated_at"]);    
                         lstloan.Add(loan);    
                     }    
                     con.Close();    

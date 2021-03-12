@@ -14,8 +14,6 @@ namespace aspbiblio.Controllers
 {
     public class UsersController : Controller
     {
-        // private readonly ILogger<AuthController> _logger;
-    
         private readonly ApplicationDbContext db;
 
         public UsersController(ApplicationDbContext db)
@@ -53,8 +51,8 @@ namespace aspbiblio.Controllers
                     users.phone = result["phone"].ToString();    
                     users.email = result["email"].ToString(); 
                     users.roles = result["roles"].ToString();
-                    users.created_at = Convert.ToDateTime(result["created_at"]);             
-                    users.updated_at = Convert.ToDateTime(result["updated_at"]);           
+                    // users.created_at = Convert.ToDateTime(result["created_at"]);             
+                    // users.updated_at = Convert.ToDateTime(result["updated_at"]);           
                     lstusers.Add(users);     
                 }    
                 con.Close();    
@@ -63,33 +61,33 @@ namespace aspbiblio.Controllers
         }   
 
         public ActionResult Edit(int? id)
-    {
-
-        if (id == null)
         {
-            return NotFound();
-        }
-        var arlistuser = new ArrayList();
 
-        using (MySqlConnection con = new MySqlConnection(connectionString))
-        { 
-            string query = "select * from users u where u.id = id";
-            MySqlCommand cmd = new MySqlCommand(query, con);    
-            // cmd.CommandType = CommandType.StoredProcedure;            
-            con.Open();    
-            MySqlDataReader result = cmd.ExecuteReader(); 
-                while (result.Read())    
-                {   
-                    arlistuser.Add(result[0]);
-                    arlistuser.Add(result[0]);
-                    arlistuser.Add(result[0]);
-                    arlistuser.Add(result[0]);
-                }    
-                con.Close(); 
-        
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var arlistuser = new ArrayList();
+
+            using (MySqlConnection con = new MySqlConnection(connectionString))
+            { 
+                string query = "select * from users u where u.id = id";
+                MySqlCommand cmd = new MySqlCommand(query, con);    
+                // cmd.CommandType = CommandType.StoredProcedure;            
+                con.Open();    
+                MySqlDataReader result = cmd.ExecuteReader(); 
+                    while (result.Read())    
+                    {   
+                        arlistuser.Add(result[0]);
+                        arlistuser.Add(result[0]);
+                        arlistuser.Add(result[0]);
+                        arlistuser.Add(result[0]);
+                    }    
+                    con.Close(); 
+            
+            }
+            return View(arlistuser);
         }
-        return View(arlistuser);
-    }
         //To create View of this Action result                
         public ActionResult Create()
         {
@@ -123,20 +121,21 @@ namespace aspbiblio.Controllers
                 cmd.ExecuteNonQuery();
                 con.Close();    
             }           
-                return RedirectToAction("Index", "Users");
+            return RedirectToAction("Index", "Users");
         }  
 
         public ActionResult Delete(int id)
         {
-        using (MySqlConnection con = new MySqlConnection(connectionString))    
-        {    
-            string query = "DELETE FROM users WHERE users.id = '"+id+"'";
-            MySqlCommand cmd = new MySqlCommand(query, con);            
-            con.Open();    
-            cmd.ExecuteNonQuery();
-            con.Close();    
-        }           
+            using (MySqlConnection con = new MySqlConnection(connectionString))    
+            {    
+                string query = "DELETE FROM users WHERE users.id = '"+id+"'";
+                MySqlCommand cmd = new MySqlCommand(query, con);            
+                con.Open();    
+                cmd.ExecuteNonQuery();
+                con.Close();    
+            }           
             return RedirectToAction("Index", "Users");
         }
+    
     }
 }

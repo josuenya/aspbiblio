@@ -24,51 +24,80 @@ namespace aspbiblio.Controllers
         this.db = db;
     }
 
+    //GET: /Auth/Login
     public ActionResult Login()
     {            
         return View();
     }  
 
-    public ActionResult login_action(string email,string password)
+    //POST: /Auth/login_action
+    public ActionResult Login_action(string email,string password)
     {   
-        List<Users> lstuser = new List<Users>();    
+        //instantiation de la classe Users
+        Users user = new Users();  
         using (MySqlConnection con = new MySqlConnection(connectionString))    
         {    
             string query = "select * from users u,roles r where email = '"+email+"' and u.roles_id = r.id";
             MySqlCommand cmd = new MySqlCommand(query, con);            
             con.Open();    
-            MySqlDataReader rdr = cmd.ExecuteReader();  
-            while (rdr.Read())    
+            MySqlDataReader result = cmd.ExecuteReader();  
+            while (result.Read())    
             {    
-                Users user = new Users(); 
-                user.id = Convert.ToInt32(rdr["id"]);    
-                user.email = rdr["email"].ToString();    
-                user.name = rdr["name"].ToString();
-                user.phone = rdr["phone"].ToString();
-                lstuser.Add(user);
-            }
+                user.id = Convert.ToInt32(result["id"]);    
+                user.email = result["email"].ToString();    
+                user.name = result["name"].ToString();
+                user.phone = result["phone"].ToString();
+                user.password = result["password"].ToString();
+            } 
             con.Close();    
         }
-        return View();
-    }
-        
-        
-        //GET: /Account/Register
-    public ActionResult Register(string returnUrl)
-    {
-        return View(); 
-    }
-
-    public ActionResult Register_action()
-    {
-        return View(); 
-    }
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        if (user.email == email && user.password == password) {
+            return RedirectToAction("Index","Home");
+        }else
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return RedirectToAction("Login","Auth");
         }
+    
+    }
+        
+        
+    //GET: /Auth/Register
+    public ActionResult Register()
+    {
+         List<Role> lstroles = new List<Role>();    
+            using (MySqlConnection con = new MySqlConnection(connectionString))    
+            {    
+                string query = "select * from roles";
+                MySqlCommand cmd = new MySqlCommand(query, con);    
+                //cmd.CommandType = CommandType.StoredProcedure;            
+                con.Open();    
+                MySqlDataReader result = cmd.ExecuteReader();  
+    
+                while (result.Read())    
+                {    
+                    Role roles = new Role(); 
+                    roles.id = Convert.ToInt32(result["id"]);    
+                    roles.libelle = result["libelle"].ToString(); 
+                    lstroles.Add(roles);    
+                }    
+                con.Close();    
+            }   
+            return View("Views/Auth/Register.cshtml",lstroles); 
+    }
+
+    //POST : Auth/Register_action
+    public ActionResult Register_action(string email,int roles_id,string name,string username,string password,string phone)
+    {
+        using (MySqlConnection con = new MySqlConnection(connectionString))    
+            {    
+                string query = "INSERT INTO users (`email`,`roles_id`,`name`,`username`,`password`,`phone`) values('"+email+"','"+roles_id+"','"+username+"','"+username+"','"+password+"','"+phone+"')";
+                MySqlCommand cmd = new MySqlCommand(query, con);            
+                con.Open();    
+                cmd.ExecuteNonQuery();
+                con.Close();    
+            }           
+                return RedirectToAction("Login", "Auth");
+    }
+
     }
 }

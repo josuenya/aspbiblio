@@ -32,27 +32,27 @@
               </div>
               <h4>Bienvenu Dans Votre Bibliotheque Univercitaire</h4>
               <h6 class="font-weight-light">Content de Vous revoie</h6>
-              <form class="pt-3">
+               @using(Html.BeginForm("login_action","Auth",FormMethod.Post)){ 
                 <div class="form-group">
-                  <label for="exampleInputEmail">Email</label>
+                  <label for="email">Email</label>
                   <div class="input-group">
                     <div class="input-group-prepend bg-transparent">
                       <span class="input-group-text bg-transparent border-right-0">
                         <i class="mdi mdi-account-outline text-primary"></i>
                       </span>
                     </div>
-                    <input type="email" class="form-control form-control-lg border-left-0" id="exampleInputEmail" placeholder="Email">
+                    <input type="email" class="form-control form-control-lg border-left-0" name="email" id="email" placeholder="Email">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword">Password</label>
+                  <label for="password">Password</label>
                   <div class="input-group">
                     <div class="input-group-prepend bg-transparent">
                       <span class="input-group-text bg-transparent border-right-0">
                         <i class="mdi mdi-lock-outline text-primary"></i>
                       </span>
                     </div>
-                    <input type="password" class="form-control form-control-lg border-left-0" id="exampleInputPassword" placeholder="Password">                        
+                    <input type="password" class="form-control form-control-lg border-left-0" name="password" id="password" placeholder="Password">                        
                   </div>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
@@ -65,7 +65,8 @@
                   <a href="#" class="auth-link text-black">Mots de Passe Oublier?</a> 
                 </div>
                 <div class="my-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" asp-controller="Home" asp-action="Index">LOGIN</a>
+                <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</button>
+                  @* <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</a> *@
                 </div>
                 <div class="mb-2 d-flex">
                   <button type="button" class="btn btn-facebook auth-form-btn flex-grow mr-1">
@@ -78,7 +79,7 @@
                 <div class="text-center mt-4 font-weight-light">
                   Don't have an account? <a asp-controller="Auth" asp-action="Register" class="text-primary">Create</a>
                 </div>
-              </form>
+              }
             </div>
           </div>
           <div class="col-lg-6 login-half-bg d-flex flex-row">
