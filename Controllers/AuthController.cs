@@ -26,7 +26,7 @@ namespace aspbiblio.Controllers
 
     //GET: /Auth/Login
     public ActionResult Login()
-    {            
+    {             
         return View();
     }  
 
@@ -46,7 +46,7 @@ namespace aspbiblio.Controllers
                 user.id = Convert.ToInt32(result["id"]);    
                 user.email = result["email"].ToString();    
                 user.name = result["name"].ToString();
-                user.phone = result["phone"].ToString();
+                user.phone = result["phone"].ToString(); 
                 user.password = result["password"].ToString();
             } 
             con.Close();    
@@ -64,7 +64,7 @@ namespace aspbiblio.Controllers
     //GET: /Auth/Register
     public ActionResult Register()
     {
-         List<Role> lstroles = new List<Role>();    
+        List<Role> lstroles = new List<Role>();    
             using (MySqlConnection con = new MySqlConnection(connectionString))    
             {    
                 string query = "select * from roles";
