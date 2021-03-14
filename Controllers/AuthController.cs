@@ -37,6 +37,9 @@ namespace aspbiblio.Controllers
         Users user = new Users();  
         using (MySqlConnection con = new MySqlConnection(connectionString))    
         {    
+            if(email == null && password == null){
+                return RedirectToAction("Login","Auth");
+            }
             string query = "select * from users u,roles r where email = '"+email+"' and u.roles_id = r.id";
             MySqlCommand cmd = new MySqlCommand(query, con);            
             con.Open();    
@@ -60,7 +63,6 @@ namespace aspbiblio.Controllers
     
     }
         
-        
     //GET: /Auth/Register
     public ActionResult Register()
     {
@@ -71,8 +73,7 @@ namespace aspbiblio.Controllers
                 MySqlCommand cmd = new MySqlCommand(query, con);    
                 //cmd.CommandType = CommandType.StoredProcedure;            
                 con.Open();    
-                MySqlDataReader result = cmd.ExecuteReader();  
-    
+                MySqlDataReader result = cmd.ExecuteReader();      
                 while (result.Read())    
                 {    
                     Role roles = new Role(); 
@@ -89,7 +90,8 @@ namespace aspbiblio.Controllers
     public ActionResult Register_action(string email,int roles_id,string name,string username,string password,string phone)
     {
         using (MySqlConnection con = new MySqlConnection(connectionString))    
-            {    
+            {
+                // strMotDePasse = FormsAuthentication.HashPasswordForStoringInConfigFile(strMotDePasse,"MD5");    
                 string query = "INSERT INTO users (`email`,`roles_id`,`name`,`username`,`password`,`phone`) values('"+email+"','"+roles_id+"','"+username+"','"+username+"','"+password+"','"+phone+"')";
                 MySqlCommand cmd = new MySqlCommand(query, con);            
                 con.Open();    

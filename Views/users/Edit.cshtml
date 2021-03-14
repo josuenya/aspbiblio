@@ -1,23 +1,26 @@
-@model IEnumerable<aspbiblio.Models.Users>
+@model aspbiblio.Models.Users
 
-    <h1>Edition</h1>
-
-    @foreach (var item in Model) {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.username)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.roles)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.phone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.email)
-                    </td>
-                </tr>
-              }
+<div class="row">
+<div class="col-md-12 stretch-card">
+<div class="card">
+    <div class="card-body">
+    @using(Html.BeginForm("Update","Users",FormMethod.Post)){ 
+        <div class="form-group">
+            <label for="libelle">Nom</label>
+            <input type="text" class="form-control" name="name" id="name" value="@Html.DisplayFor(m => m.name)">
+        </div>
+        <div class="form-group">
+            <label for="libelle">Adresse Mail</label>
+            <input type="email" class="form-control" name="email" id="email" value="@Html.DisplayFor(m => m.email)">
+        </div>
+        <div class="form-group">
+            <label for="libelle">Telephone</label>
+            <input type="text" class="form-control" name="phone" id="phone" value="@Html.DisplayFor(m => m.phone)">
+            <input hidden type="text" value="@Html.DisplayFor(m => m.id)" class="form-control" name="id" id="id" placeholder="ID">
+        </div>
+        <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+    }
+    </div>
+</div>
+</div>
+</div>

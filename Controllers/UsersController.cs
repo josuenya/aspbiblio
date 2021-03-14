@@ -62,33 +62,42 @@ namespace aspbiblio.Controllers
 
         public ActionResult Edit(int? id)
         {
-
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var arlistuser = new ArrayList();
-
-            using (MySqlConnection con = new MySqlConnection(connectionString))
-            { 
-                string query = "select * from users u where u.id = id";
-                MySqlCommand cmd = new MySqlCommand(query, con);    
-                // cmd.CommandType = CommandType.StoredProcedure;            
+            ViewBag.Title = "Modification"; 
+            if (id == null) return NotFound();
+            Users user = new Users();
+            using (MySqlConnection con = new MySqlConnection(connectionString))    
+            {    
+                string query = "select * from users u where u.id='"+id+"' ";
+                MySqlCommand cmd = new MySqlCommand(query, con); 
                 con.Open();    
-                MySqlDataReader result = cmd.ExecuteReader(); 
-                    while (result.Read())    
-                    {   
-                        arlistuser.Add(result[0]);
-                        arlistuser.Add(result[0]);
-                        arlistuser.Add(result[0]);
-                        arlistuser.Add(result[0]);
-                    }    
-                    con.Close(); 
-            
+                MySqlDataReader result = cmd.ExecuteReader();
+                while (result.Read())    
+                {    
+                    user.id = Convert.ToInt32(result["id"]);    
+                    user.email = result["email"].ToString();    
+                    user.roles_id = Convert.ToInt32(result["roles_id"]);  
+                    user.name = result["name"].ToString();    
+                    user.phone = result["phone"].ToString();    
+
+                    
+                }  
             }
-            return View(arlistuser);
+            return View(user);
         }
         //To create View of this Action result                
+        
+        public ActionResult Update(string email,string name,int id,string phone)
+        {
+            using (MySqlConnection con = new MySqlConnection(connectionString))    
+            {    
+                string query = "UPDATE users u  SET `email` = '"+email+"', `name` = '"+name+"', `username` = '"+name+"', `phone` = '"+phone+"' WHERE u.id = '"+id+"'";
+                MySqlCommand cmd = new MySqlCommand(query, con);            
+                con.Open();    
+                cmd.ExecuteNonQuery();
+                con.Close();    
+            } 
+                return RedirectToAction("Index", "Users");
+        }
         public ActionResult Create()
         {
             List<Role> lstroles = new List<Role>();    

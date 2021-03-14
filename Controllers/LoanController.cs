@@ -53,7 +53,27 @@ namespace aspbiblio.Controllers
              //To create View of this Action result                
             public ActionResult Create()
             {
-                return View();
+                ViewBag.Title = "Nouveau Emprunt";
+                List<Users> lstusers = new List<Users>();    
+                using (MySqlConnection con = new MySqlConnection(connectionString))    
+                {    
+                    string query = "select * from users";
+                    MySqlCommand cmd = new MySqlCommand(query, con);    
+                    //cmd.CommandType = CommandType.StoredProcedure;            
+                    con.Open();    
+                    MySqlDataReader result = cmd.ExecuteReader();  
+        
+                    while (result.Read())    
+                    {    
+                        Users users = new Users(); 
+                        users.id = Convert.ToInt32(result["id"]);    
+                        users.name = result["name"].ToString(); 
+                        lstusers.Add(users);    
+                    }    
+                    con.Close();    
+                }   
+                
+                return View("Views/Loan/Create.cshtml",lstusers);
             } 
 
     }
